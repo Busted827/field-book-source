@@ -1,0 +1,203 @@
+@import "@fontsource/outfit/latin-400.css";
+@import "@fontsource/outfit/latin-500.css";
+@import "@fontsource/outfit/latin-600.css";
+@import "@fontsource/outfit/latin-700.css";
+@import "@fontsource/ibm-plex-mono/latin-400.css";
+@import "@fontsource/ibm-plex-mono/latin-500.css";
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-ink: #1c1916;
+  --color-paper: #f3eee6;
+  --color-card: #fffcf8;
+  --color-line: #e4dacb;
+  --color-muted: #6e665c;
+  --color-sand: #efe4d4;
+  --color-pine: #1d4a38;
+  --color-pine-deep: #163c2d;
+  --color-copper: #b85c38;
+  --color-copper-soft: #f6e6dc;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  label.btn {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+  }
+
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-pine);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .field {
+    width: 100%;
+    min-height: 3rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-card);
+    padding: 0.7rem 0.9rem;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: var(--color-ink);
+  }
+
+  .field::placeholder {
+    color: color-mix(in srgb, var(--color-muted) 80%, transparent);
+  }
+
+  textarea.field {
+    min-height: 7.5rem;
+    resize: vertical;
+  }
+
+  .select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'><path d='M4 6l4 4 4-4' stroke='%231d4a38' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 0.8rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 0.75rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .btn-primary {
+    background: var(--color-pine);
+    color: var(--color-paper);
+  }
+
+  .btn-primary:active {
+    background: var(--color-pine-deep);
+  }
+
+  .btn-sand {
+    background: var(--color-sand);
+    color: var(--color-ink);
+  }
+
+  .btn-sand:active {
+    background: var(--color-line);
+  }
+
+  .icon-btn {
+    display: inline-flex;
+    height: 2.75rem;
+    width: 2.75rem;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid var(--color-line);
+    background: var(--color-card);
+    color: var(--color-ink);
+  }
+
+  .icon-btn:active {
+    background: var(--color-sand);
+  }
+
+  .chip {
+    display: inline-flex;
+    min-height: 2.75rem;
+    align-items: center;
+    border-radius: 9999px;
+    border: 1px solid var(--color-line);
+    background: var(--color-card);
+    padding: 0 0.95rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+    color: var(--color-ink);
+  }
+
+  .chip[aria-pressed="true"] {
+    border-color: var(--color-pine);
+    background: var(--color-pine);
+    color: var(--color-paper);
+  }
+
+  .card {
+    position: relative;
+    display: block;
+    width: 100%;
+    border-radius: 1rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-card);
+    padding: 0.9rem 1rem 0.95rem 1.15rem;
+    text-align: left;
+    color: inherit;
+  }
+
+  .card:active {
+    background: var(--color-sand);
+  }
+
+  .label {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn,
+  .chip,
+  .icon-btn,
+  .card {
+    transition: background-color 160ms ease, border-color 160ms ease;
+  }
+}
